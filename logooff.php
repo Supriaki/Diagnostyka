@@ -1,0 +1,3 @@
+<?php
+// Usuniecie cookies/sesij
+?>

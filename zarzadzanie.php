@@ -1,0 +1,3 @@
+<?php
+// Zarzadzanie baza danych
+?>
