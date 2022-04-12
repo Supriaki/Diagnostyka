@@ -1,0 +1,272 @@
+:root {
+    --colorek: #29166f;
+}
+
+.wysrodkowanie {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+/* Login! */
+.login-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  padding: 80px 40px 40px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+}
+.form::before {
+  content:'';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(75, 77, 71, 0.034);
+  transform: skewX(-26deg);
+  transform-origin: bottom left;
+  border-radius: 10px;
+  pointer-events: none;
+}
+.form img {
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+  width: 100px;
+  background: rgba(255,255,255, 0.8);
+  border-radius: 50%;
+}
+.form h2 {
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  color: var(--colorek);
+}
+.form .input-group {
+  position: relative;
+}
+.form .input-group input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgb(246, 242, 12);
+  outline: none;
+  background-color: transparent;
+  color: inherit;
+}
+.form .input-group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: .3s ease-out;
+  color:rgb(246, 242, 12);
+}
+.form .input-group input:focus + label,
+.form .input-group input:valid + label {
+  transform: translateY(-18px);
+  color: var(--colorek);
+  font-size: .8rem;
+}
+.submit-btn {
+  display: block;
+  margin-left: auto;
+  border: none;
+  outline: none;
+  background: var(--colorek);
+  color: yellow;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.forgot-pw {
+  color: inherit;
+}
+
+#forgot-pw {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  z-index: 1;
+  background: #fff;
+  opacity: 0;
+  transition: 0.6s;
+}
+#forgot-pw:target {
+  height: 100%;
+  opacity: 1;
+}
+.close {
+  position: absolute;
+  right: 1.5rem;
+  top: 0.5rem;
+  font-size: 2rem;
+  font-weight: 900;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Pytania diag! */
+.selectdiv {
+position: relative;
+float: left;
+min-width: 200px;
+margin: 50px 33%;
+}
+
+select::-ms-expand {
+display: none;
+}
+
+.selectdiv:after {
+  /* content: '<>'; */
+  font: 17px "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 11px;
+  top: 18px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #999;
+  position: absolute;
+  pointer-events: none;
+}
+
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: 50px;
+  float: right;
+  margin: 5px 0px;
+  padding: 0px 24px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  -ms-word-break: normal;
+  word-break: normal;
+}
+
+/* Admin panel! */
+#panel-menu {
+  float: left;
+  padding: 0px;
+  width: 1000px;
+  height: 50px;
+  /* background-color: #29166f; */
+}
+
+.panel-nav ul {
+  float: left;
+  width: 100%;
+  margin: 0px;
+  padding: 10px;
+  list-style: none;
+
+  display: flex;
+  justify-content: center;
+	align-items: center;
+}
+
+.panel-nav LI A  {
+  float: left;
+  display: block;
+  height: 25px;
+  width: 250px;
+  margin-right: 5px;
+  border: 2px solid black;
+  text-decoration: none;
+  text-align: center;
+  color: rgb(139, 174, 202);
+  background-color: rgb(24, 38, 51);
+}
+
+.panel-nav LI A:hover {
+  color: white;
+  /* background-color: Tomato; */
+}	
+
+/* Tresc paneli! */
+.panel-tresc {
+  float: left;
+  width: 1000px;
+  height: 750px;
+  /* background-color: thistle; */
+}
+
+#mynetwork {
+  width: 1000px;
+  height: 400px;
+  /* background-color: chocolate; */
+  border-width: 1px;
+  border-bottom-style: dashed;
+  border-top-style: dashed;
+}
+
+.vis-network {
+  position: relative; 
+  overflow: hidden; 
+  touch-action: pan-y; 
+  user-select: none; 
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+}
+
+canvas {
+  position: relative; 
+  touch-action: none; 
+  user-select: none; 
+  -webkit-user-drag: none; 
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+}
+
+table { 
+	width: 1000px; 
+	border-collapse: collapse; 
+	/* margin: 50px auto; */
+}
+
+th { 
+	background: #3498db; 
+	color: white; 
+	font-weight: bold; 
+}
+
+td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 18px;
+}
