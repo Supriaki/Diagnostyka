@@ -31,7 +31,7 @@
         </section>
         
         <footer>
-            Wykonane przez: Bartłomiej Ochota oraz Michał Szklaruk-Leonkiewicz <br>
+            Wykonane przez: Bartłomiej Ochota<br>
         </footer>
     </div>
 </body>
