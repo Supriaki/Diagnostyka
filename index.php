@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -12,12 +13,18 @@
 </head>
 <body>
     <div class="pasek">
-        <div class="logo"><div class="napis"><a href="index.php">Technikum Łączności i Multimediów Cyfrowych w Szczecinie</a></div></div>
+        <div class="logo">
+            <div class="napis">
+                <a href="index.php">Technikum Łączności i Multimediów Cyfrowych w Szczecinie</a>
+            </div>
+        </div>
     </div>
 
     <div id="szablon">
         <section>
             <?php
+                // Default : importing login form 
+                // If strona is set = import selected page
                 if (!isset($_GET['strona'])){
                     $plik = 'login';
                 }
@@ -31,7 +38,7 @@
         </section>
         
         <footer>
-            Wykonane przez: Bartłomiej Ochota<br>
+            Wykonane przez: Bartłomiej Ochota oraz Michał Szklaruk-Leonkiewicz <br>
         </footer>
     </div>
 </body>

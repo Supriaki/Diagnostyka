@@ -9,11 +9,6 @@
 
     $haslo = sha1($haslo); // encrypting password
 
-    $zapytanie_osoba = "SELECT osoba FROM klasa WHERE login='$login' AND haslo='$haslo';";
-    $wynik_osoba = mysqli_query($conn, $zapytanie_osoba);
-    $osoba = mysqli_fetch_row($wynik_osoba);
-
-
     // Logging in administrator
     $zapytanie_spec = "SELECT count(*) FROM uzytk_spec WHERE uzytkownik='$login' AND haslo='$haslo'";
     $wynik = mysqli_query($conn, $zapytanie_spec);
@@ -22,6 +17,10 @@
     $ile_znaleziono=$wiersz[0];
 
     if ($ile_znaleziono > 0) {
+        $zapytanie_osoba = "SELECT uzytkownik FROM uzytk_spec WHERE uzytkownik='$login' AND haslo='$haslo';";
+        $wynik_osoba = mysqli_query($conn, $zapytanie_osoba);
+        $osoba = mysqli_fetch_row($wynik_osoba);
+
         setcookie("loginob", $osoba[0], time()+60);
         echo '<script language="JavaScript" type="text/javascript">
             location.href="index.php?strona=diagram";
@@ -37,7 +36,11 @@
     $ile_znaleziono=$wiersz[0];
 
     if ($ile_znaleziono > 0) {
+        $zapytanie_osoba = "SELECT osoba FROM klasa WHERE login='$login' AND haslo='$haslo';";
+        $wynik_osoba = mysqli_query($conn, $zapytanie_osoba);
+        $osoba = mysqli_fetch_row($wynik_osoba);
         //echo 'Jesteś zalogowany';
+        
         setcookie("loginob", $osoba[0], time()+60);
         echo '<script language="JavaScript" type="text/javascript">
             location.href="index.php?strona=pytania_diag";
