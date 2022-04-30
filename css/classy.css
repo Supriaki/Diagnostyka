@@ -3,19 +3,21 @@
 }
 
 .wysrodkowanie {
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
-/* Login! */
-.login-wrapper {
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+/* Login! */
+.login-wrapper {
+  height: 500px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  margin-top: 50px;
+}
+
 .form {
   position: relative;
   width: 100%;
@@ -132,14 +134,14 @@ align-items: center;
 
 /* Pytania diag! */
 .selectdiv {
-position: relative;
-float: left;
-min-width: 200px;
-margin: 50px 33%;
+  position: relative;
+  float: left;
+  /* min-width: 200px; */
+  margin: 50px 33%;
 }
 
 select::-ms-expand {
-display: none;
+  display: none;
 }
 
 .selectdiv:after {
@@ -177,6 +179,40 @@ display: none;
   border: 1px solid #cccccc;
   -ms-word-break: normal;
   word-break: normal;
+}
+
+.guzik-diag {
+  align-items: center;
+  appearance: button;
+  background-color: #0276FF;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: "RM Neue",sans-serif;
+  font-size: 70%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 5px 21px;
+  text-align: center;
+  text-transform: none;
+  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.guzik-diag:active {
+  background-color: #006AE8;
+}
+
+.guzik-diag:hover {
+  background-color: #1C84FF;
 }
 
 /* Admin panel! */
@@ -269,4 +305,30 @@ td, th {
 	border: 1px solid #ccc; 
 	text-align: left; 
 	font-size: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-wrapper {
+    height: 500px;
+    width: 250px;
+  }
+
+  .selectdiv {
+    width: 250px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .login-wrapper {
+    height: 500px;
+    width: 250px;
+  }
+
+  .selectdiv {
+    width: 200px;
+    
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
 }

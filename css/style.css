@@ -18,7 +18,10 @@ body {
 	color: black;
     text-align: center;
     scroll-behavior: smooth;
-    background: url(../img/background_orginal.jpg) no-repeat center;
+    background-image: url('../img/background_orginal.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     background-size: cover;
 }
 
@@ -82,3 +85,30 @@ form {font-size: 30px;}
     margin-top: calc( ((var(--wysokosc-logo) - var(--font-size-napisu)) / 2 ) - 2px );
     margin-left: 75px;
 }
+
+@media only screen and (max-width: 600px) {
+    #szablon {
+        width: 600px;
+    }
+
+    .pasek {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+} 
+
+
+@media only screen and (max-width: 375px) {
+    #szablon {
+        width: 375px;
+    }
+
+    .pasek {
+        width: 375px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+} 

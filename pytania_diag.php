@@ -23,6 +23,7 @@
         Wybierz 3 kolegów z którmi chciałbyś być na wycieczce szkolnej!
         Kolejność ma znaczenie.
     </h2>
+
     <form action="index.php?strona=zapytanie_diag" method="post" class="">
 
         <label for="koledzy1">Pierwszy kolega:</label>
@@ -53,8 +54,9 @@
         
         <br>
         <br>
+        <br>
         
-        <center><input type="submit" value="Wyślij!"></center>
+        <center><input type="submit" value="Wyślij!" class="guzik-diag"></center>
 
     </form>
 </div>
