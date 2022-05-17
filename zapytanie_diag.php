@@ -1,3 +1,14 @@
+<?php 
+    session_start();
+
+    // Checking if session is enabled
+    if(!isset($_SESSION['user'])) {
+        echo '<script language="JavaScript" type="text/javascript">
+                 location.href="index.php";
+            </script>';
+    } else {
+?>
+
 <div class="wysrodkowanie">
 <?php
     require("php_fun/sql_login.php");
@@ -20,3 +31,7 @@
     mysqli_close($conn);
 ?>
 </div>
+
+<?php
+    }
+?>

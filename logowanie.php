@@ -1,5 +1,10 @@
+<?php
+    session_start();
+?>
+
 <div class="wysrodkowanie">
 <?php
+
     if (!isset($_POST['loginUser']) || !isset($_POST['loginPassword'])) exit;
 
     $login = trim($_POST['loginUser']);
@@ -22,6 +27,8 @@
         $osoba = mysqli_fetch_row($wynik_osoba);
 
         setcookie("loginob", $osoba[0], time()+60);
+        $_SESSION['user'] = $_POST['loginUser'];
+
         echo '<script language="JavaScript" type="text/javascript">
             location.href="index.php?strona=diagram";
         </script>';
@@ -42,6 +49,8 @@
         //echo 'Jesteś zalogowany';
         
         setcookie("loginob", $osoba[0], time()+60);
+        $_SESSION['user'] = $_POST['loginUser'];
+
         echo '<script language="JavaScript" type="text/javascript">
             location.href="index.php?strona=pytania_diag";
         </script>';

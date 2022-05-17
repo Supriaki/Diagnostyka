@@ -1,5 +1,8 @@
 :root {
-    --colorek: #29166f;
+  --colorek: #29166f;
+  --bg_color: rgb(24, 38, 51);
+  --szeroksc_panelu: 1000px;
+  --wysokosc_panelu: 300px;
 }
 
 .wysrodkowanie {
@@ -23,13 +26,13 @@
   width: 100%;
   max-width: 380px;
   padding: 80px 40px 40px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   color: #fff;
-  box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
 }
 .form::before {
-  content:'';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -46,7 +49,7 @@
   top: -50px;
   left: calc(50% - 50px);
   width: 100px;
-  background: rgba(255,255,255, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
 }
 .form h2 {
@@ -77,14 +80,14 @@
   padding: 10px 0;
   font-size: 1rem;
   pointer-events: none;
-  transition: .3s ease-out;
-  color:rgb(246, 242, 12);
+  transition: 0.3s ease-out;
+  color: rgb(246, 242, 12);
 }
 .form .input-group input:focus + label,
 .form .input-group input:valid + label {
   transform: translateY(-18px);
   color: var(--colorek);
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 .submit-btn {
   display: block;
@@ -184,7 +187,7 @@ select::-ms-expand {
 .guzik-diag {
   align-items: center;
   appearance: button;
-  background-color: #0276FF;
+  background-color: #0276ff;
   border-radius: 8px;
   border-style: none;
   box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
@@ -194,25 +197,26 @@ select::-ms-expand {
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
-  font-family: "RM Neue",sans-serif;
+  font-family: "RM Neue", sans-serif;
   font-size: 70%;
   line-height: 1.15;
   margin: 0;
   padding: 5px 21px;
   text-align: center;
   text-transform: none;
-  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  transition: color 0.13s ease-in-out, background 0.13s ease-in-out,
+    opacity 0.13s ease-in-out, box-shadow 0.13s ease-in-out;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
 
 .guzik-diag:active {
-  background-color: #006AE8;
+  background-color: #006ae8;
 }
 
 .guzik-diag:hover {
-  background-color: #1C84FF;
+  background-color: #1c84ff;
 }
 
 /* Admin panel! */
@@ -233,10 +237,10 @@ select::-ms-expand {
 
   display: flex;
   justify-content: center;
-	align-items: center;
+  align-items: center;
 }
 
-.panel-nav LI A  {
+.panel-nav LI A {
   float: left;
   display: block;
   height: 25px;
@@ -246,13 +250,13 @@ select::-ms-expand {
   text-decoration: none;
   text-align: center;
   color: rgb(139, 174, 202);
-  background-color: rgb(24, 38, 51);
+  background-color: var(--bg_color);
 }
 
 .panel-nav LI A:hover {
   color: white;
   /* background-color: Tomato; */
-}	
+}
 
 /* Tresc paneli! */
 .panel-tresc {
@@ -262,9 +266,16 @@ select::-ms-expand {
   /* background-color: thistle; */
 }
 
+.panel-database {
+  width: var(--szeroksc_panelu);
+  height: 50px;
+  margin-bottom: 5px;
+  background-color: yellowgreen;
+}
+
 #mynetwork {
   width: 1000px;
-  height: 600px;
+  height: 1000px;
   /* background-color: chocolate; */
   border-width: 1px;
   border-bottom-style: dashed;
@@ -272,39 +283,41 @@ select::-ms-expand {
 }
 
 .vis-network {
-  position: relative; 
-  overflow: hidden; 
-  touch-action: pan-y; 
-  user-select: none; 
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
   -webkit-user-drag: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 canvas {
-  position: relative; 
-  touch-action: none; 
-  user-select: none; 
-  -webkit-user-drag: none; 
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+  position: relative;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-table { 
-	width: 1000px; 
-	border-collapse: collapse; 
-	/* margin: 50px auto; */
+table {
+  margin-top: 5px;
+  width: 1000px;
+  border-collapse: collapse;
+  /* margin: 50px auto; */
 }
 
-th { 
-	background: #3498db; 
-	color: white; 
-	font-weight: bold; 
+th {
+  background: #3498db;
+  color: white;
+  font-weight: bold;
 }
 
-td, th { 
-	padding: 10px; 
-	border: 1px solid #ccc; 
-	text-align: left; 
-	font-size: 18px;
+td,
+th {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 18px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -326,9 +339,79 @@ td, th {
 
   .selectdiv {
     width: 200px;
-    
+
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
   }
+}
+
+/* Zarzadzanie database */
+
+input {
+  appearance: none;
+  border-radius: 0;
+}
+
+.card {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 425px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px 0 rgba(rgb(169, 168, 168), 0.25);
+  padding: 0.75rem;
+}
+
+.card-form {
+  padding: 2rem 1rem 0;
+}
+
+.input {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.input-field {
+  border: 0;
+  z-index: 1;
+  background-color: transparent;
+  border-bottom: 2px solid #eee;
+  font: inherit;
+  font-size: 1.125rem;
+  padding: 0.25rem 0;
+}
+
+.action {
+  margin-top: 0.5rem;
+}
+
+.action-button {
+  font: inherit;
+  font-size: 1.25rem;
+  padding: 1em;
+  width: 100%;
+  font-weight: 500;
+  background-color: var(--bg_color);
+  border-radius: 6px;
+  color: #fff;
+  border: 0;
+}
+
+.zarz-prawa {
+  float: left;
+  background-color: wheat;
+  width: calc(var(--szeroksc_panelu) / 2);
+  height: var(--wysokosc_panelu);
+}
+
+.zarz-lewa {
+  float: left;
+  background-color: chartreuse;
+  width: calc(var(--szeroksc_panelu) / 2);
+  height: var(--wysokosc_panelu);
 }

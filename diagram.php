@@ -1,12 +1,49 @@
+<?php 
+    session_start();
+
+    // Checking if session is enabled
+    if(!isset($_SESSION['user'])) {
+        echo '<script language="JavaScript" type="text/javascript">
+                 location.href="index.php";
+            </script>';
+    } else {
+?>
+
 <?php
   // Necessary functions to work with diagram
   require("php_fun/diag_fun.php");
 
   // Navigation bar
   require("php_fun/admin_nav.html");
+
+  function tabele_do_wybr()
+  {
+      require("php_fun/sql_login.php");
+
+      $zapytanie_tabele = "show tables;";
+      $wynik = mysqli_query($conn, $zapytanie_tabele);
+      
+      while( $wiersz = mysqli_fetch_array($wynik)){
+        if ( !($wiersz[0] == "uzytk_spec") ) {
+          echo '<option value="'. $wiersz[0] .'">'. $wiersz[0] .'</option>';
+        }
+      }
+
+      mysqli_close($conn);
+  }
 ?>
 
 <div class="panel-tresc">
+
+  <div class="panel-database">
+    <div class="wysrodkowanie">
+      <select name="tabele" id="tabele">
+        <?php
+            tabele_do_wybr();
+        ?>
+      </select>
+    </div>
+  </div>
 
   <div id="mynetwork">
     <div class="vis-network" tabindex="0">
@@ -22,7 +59,6 @@
     var network = new vis.Network(container, data);
   </script>
 
-  <br>
   <table border="1">
     <tr>
       <th>Liczba wszystkich wzajemnych wyborów: </th>
@@ -41,3 +77,7 @@
   </table>
   
 </div>
+
+<?php
+    }
+?>

@@ -1,114 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
 :root {
-    --glowna-wysokosc-headera: 100px;
-    --glowna-wysokosc-srodka: 800px;
-    --glowna-wysokosc-stopki: 40px;
-    --glowna-szerokosc-srodka: 400px;
-    --border-dlugosc: 20px;
-    --wysokosc-logo: 65px;
-    --font-size-napisu: 30px;
-    --background-color-srodek-stopka: #ffffff;
+  --glowna-wysokosc-headera: 100px;
+  --glowna-wysokosc-srodka: 800px;
+  --glowna-wysokosc-stopki: 40px;
+  --glowna-szerokosc-srodka: 400px;
+  --border-dlugosc: 20px;
+  --wysokosc-logo: 65px;
+  --font-size-napisu: 30px;
+  --background-color-srodek-stopka: #ffffff;
 }
 
 body {
-	font-family: 'Montserrat', sans-serif;
-	margin: 0;
-	padding: 0;
-	color: black;
-    text-align: center;
-    scroll-behavior: smooth;
-    background-image: url('../img/background_orginal.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: black;
+  text-align: center;
+  scroll-behavior: smooth;
+  background-image: url("../img/background_orginal.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 #szablon {
-    width: 1000px;
-    padding-top: 80px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-
+  width: 1000px;
+  padding-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
 section {
-    height: var(--glowna-wysokosc-srodka);
-    background-color: var(--background-color-srodek-stopka);
-    font-size: larger;
-    box-shadow: 1px 1px 10px black;
- 
+  height: var(--glowna-wysokosc-srodka);
+  background-color: var(--background-color-srodek-stopka);
+  font-size: larger;
+  box-shadow: 1px 1px 10px black;
 }
 
 footer {
-    height: var(--glowna-wysokosc-stopki);
-    background-color: var(--background-color-srodek-stopka);
-    border-bottom-right-radius: var(--border-dlugosc);
-    border-bottom-left-radius: var(--border-dlugosc);
-    text-align: center;
-    /* box-shadow: 0px 0px 10px black; */
-    box-shadow: 0 4px 5px -2px black;
+  height: var(--glowna-wysokosc-stopki);
+  background-color: var(--background-color-srodek-stopka);
+  border-bottom-right-radius: var(--border-dlugosc);
+  border-bottom-left-radius: var(--border-dlugosc);
+  text-align: center;
+  /* box-shadow: 0px 0px 10px black; */
+  box-shadow: 0 4px 5px -2px black;
 }
 
-A {text-decoration: none;}
-form {font-size: 30px;}
+A {
+  text-decoration: none;
+}
+form {
+  font-size: 30px;
+}
 
 .pasek {
-    width: 100%;
-    height: 80px;
-    background-color: white;
-    box-shadow: 1px 1px 10px black;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    z-index: 100;
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  box-shadow: 1px 1px 10px black;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: 100;
 }
 
 .logo {
-    background-image: url(../img/logo_tlimc.png);
-    background-size: contain;
-    height: var(--wysokosc-logo);
-    background-repeat: no-repeat;
-    margin-left: 20px;
+  background-image: url(../img/logo_tlimc.png);
+  background-size: contain;
+  height: var(--wysokosc-logo);
+  background-repeat: no-repeat;
+  margin-left: 20px;
 }
 
 .napis {
-    color: black;
-    font-size: var(--font-size-napisu);
-    font-style: normal;
-    letter-spacing: 1px;
-    justify-content: center;
-	align-items: center;
-    padding: 0px;
-    margin-top: calc( ((var(--wysokosc-logo) - var(--font-size-napisu)) / 2 ) - 2px );
-    margin-left: 75px;
+  color: black;
+  font-size: var(--font-size-napisu);
+  font-style: normal;
+  letter-spacing: 1px;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin-top: calc(
+    ((var(--wysokosc-logo) - var(--font-size-napisu)) / 2) - 2px
+  );
+  margin-left: 75px;
 }
 
 @media only screen and (max-width: 600px) {
-    #szablon {
-        width: 600px;
-    }
+  #szablon {
+    width: 600px;
+  }
 
-    .pasek {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-} 
-
+  .pasek {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
 @media only screen and (max-width: 375px) {
-    #szablon {
-        width: 375px;
-    }
+  #szablon {
+    width: 375px;
+  }
 
-    .pasek {
-        width: 375px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-} 
+  .pasek {
+    width: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
