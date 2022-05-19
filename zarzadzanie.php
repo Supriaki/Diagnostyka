@@ -17,11 +17,15 @@
         }
     }
 
-    // table variable
-    require('php_fun/database_settings.php');
-
+    require('php_fun/set_fun.php');
     if (isset($_POST['tabela'])) {
-        $aktu_klasa = $_POST['tabela'];
+        $nazwa_tabeli = $_POST['tabela'];
+        if (setTableName($nazwa_tabeli) == 0) {
+            echo '<script language="JavaScript" type="text/javascript">
+                alert("Ustawiono nową bazę danych!");
+                </script>';
+        }
+        
     }
 ?>
 
@@ -47,20 +51,21 @@
     
     <div class="zarz-prawa">
         <div class="wysrodkowanie">
-            Aktywna globalnie klasa (tabela)
             <form action="index.php?strona=zarzadzanie" class="card-form" method="post">
-                <div class="input">
+                <div class="select">
                     <select name="tabela" id="tabela">
                     <?php
                         require("php_fun/sql_login.php");
 
-                        echo '<option value="'. $aktu_klasa .'" selected>'. $aktu_klasa .'</option>';
+                        $tabela = getTableName();
+
+                        echo '<option value="'. $tabela .'" selected>'. $tabela .'</option>';
                         
                         $zapytanie_tabele = "show tables;";
                         $wynik = mysqli_query($conn, $zapytanie_tabele);
                         
                         while( $wiersz = mysqli_fetch_array($wynik)){
-                          if ( (!($wiersz[0] == "uzytk_spec")) && (!($wiersz[0] == $aktu_klasa)) ) {
+                          if ( (!($wiersz[0] == "uzytk_spec")) && (!($wiersz[0] == "tabela")) && (!($wiersz[0] == $tabela))) {
                             echo '<option value="'. $wiersz[0] .'">'. $wiersz[0] .'</option>';
                           }
                         }
@@ -69,8 +74,9 @@
                     ?>
                     </select>
                 </div>
+
                 <div class="action">
-                    <button class="action-button" type="submit"> Ustaw Tabele </button>
+                    <button class="action-button" type="submit"> Ustaw globalnie aktywną tabele </button>
                 </div>
             </form>
         </div>

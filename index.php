@@ -18,6 +18,7 @@
       type="text/javascript"
       src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
     ></script>
+
     <script type="text/javascript" src="js/important_fun.js"></script>
 
     <title>Diagnostyka</title>
@@ -52,21 +53,31 @@
             ?>
       </section>
 
-      <script>
-        <?php
-            echo "let strona_akt = '" . $_GET['strona'] . "';";
-        ?>
-
-        if (strona_akt == 'diagram') {
-            let sekcja = document.querySelector('section');
-            sekcja.style.height = "1300px";
-        }
-      </script>
-
       <footer>
         Wykonane przez: Bartłomiej Ochota oraz Michał Szklaruk-Leonkiewicz
         <br />
       </footer>
     </div>
+
+    <script type="text/javascript">
+      <?php
+          echo "let strona_akt = '" . $_GET['strona'] . "';";
+      ?>
+
+      if (strona_akt == 'diagram') {
+          let sekcja = document.querySelector('szablon');
+          sekcja.style.height = "1300px";
+      }
+
+      if (strona_akt == 'pytania_diag') {
+          if (screen.width < 600) {
+              console.log('im in');
+              // document.getElementsByClassName('selectdiv').style.width = screen.width / 2;
+              document.getElementById("szablon").style.width = screen.width;
+              // document.querySelector('section').style.width = screen.width;
+              // document.querySelector('footer').style.width = screen.width;
+          }
+      }
+    </script>
   </body>
 </html>

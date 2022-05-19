@@ -1,10 +1,10 @@
 <?php
-  function diag_wypel() {
+  function diag_wypel($tabela) {
     // Generating information from database in right pattern 
     // Example of pattern: 1 -> 2; 2 -> 3; 2 -- 4; 2 -> 1
     require("php_fun/sql_login.php");
 
-    $zapytanie = "SELECT osoba, 1wybor, 2wybor, 3wybor  FROM `klasa`;";
+    $zapytanie = "SELECT osoba, 1wybor, 2wybor, 3wybor  FROM `$tabela`;";
     $wynik = mysqli_query($conn, $zapytanie);
 
     while($wiersz = mysqli_fetch_array($wynik)) {
@@ -20,7 +20,7 @@
     mysqli_close($conn);
   }
 
-  function diag_wzj_wybory() {
+  function diag_wzj_wybory($tabela) {
     // Checking how much mutual decisions
     require("php_fun/sql_login.php");
     
@@ -28,13 +28,13 @@
     $i = 1;
     
     // Checking how much people are in database 
-    $zapytanie = "SELECT COUNT(id_klasa) FROM `klasa`;";
+    $zapytanie = "SELECT COUNT(id_klasa) FROM `$tabela`;";
     $wynik = mysqli_query($conn, $zapytanie);
     $wynik_zapytania = mysqli_fetch_array($wynik);
     $ilosc_osob = (int)$wynik_zapytania[0];
 
     while($i <= $ilosc_osob){
-      $zapytanie = "SELECT osoba, 1wybor, 2wybor, 3wybor FROM `klasa` WHERE osoba='$i';";
+      $zapytanie = "SELECT osoba, 1wybor, 2wybor, 3wybor FROM `$tabela` WHERE osoba='$i';";
       $wynik = mysqli_query($conn, $zapytanie);
       $array_osob = mysqli_fetch_array($wynik);
 
@@ -44,7 +44,7 @@
       $osoba_trzy = $array_osob["3wybor"];
 
      
-      $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `klasa` WHERE osoba='$osoba_jeden';";
+      $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `$tabela` WHERE osoba='$osoba_jeden';";
       $wynik = mysqli_query($conn, $zapytanie);
       $wynik_osoby = mysqli_fetch_array($wynik);
 
@@ -61,7 +61,7 @@
         $ilosc_wyborow += 1;
       }
       
-      $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `klasa` WHERE osoba='$osoba_dwa';";
+      $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `$tabela` WHERE osoba='$osoba_dwa';";
       $wynik = mysqli_query($conn, $zapytanie);
       $wynik_osoby = mysqli_fetch_array($wynik);
 
@@ -78,7 +78,7 @@
         $ilosc_wyborow += 1;
       }
 
-      $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `klasa` WHERE osoba='$osoba_trzy';";
+      $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `$tabela` WHERE osoba='$osoba_trzy';";
       $wynik = mysqli_query($conn, $zapytanie);
       $wynik_osoby = mysqli_fetch_array($wynik);
 
@@ -104,10 +104,10 @@
     return $ilosc_wyborow /2;
   }
 
-  function diag_ile_uczniow(){
+  function diag_ile_uczniow($tabela){
     require("php_fun/sql_login.php");
 
-    $zapytanie = "SELECT COUNT(id_klasa) FROM `klasa`;";
+    $zapytanie = "SELECT COUNT(id_klasa) FROM `$tabela`;";
     $wynik = mysqli_query($conn, $zapytanie);
     $wynik_zapytania = mysqli_fetch_array($wynik);
     $ilosc_osob = (int)$wynik_zapytania[0];
@@ -115,7 +115,7 @@
     return $ilosc_osob;
   }
 
-  function diag_ile_zer(){
+  function diag_ile_zer($tabela){
     // Checking how much unrequited decisions
     require("php_fun/sql_login.php");
     
@@ -124,14 +124,14 @@
     $i = 1;
     
     // Checking how much people are in database 
-    $zapytanie = "SELECT COUNT(id_klasa) FROM `klasa`;";
+    $zapytanie = "SELECT COUNT(id_klasa) FROM `$tabela`;";
     $wynik = mysqli_query($conn, $zapytanie);
     $wynik_zapytania = mysqli_fetch_array($wynik);
     $ilosc_osob = (int)$wynik_zapytania[0];
 
     while($i <= $ilosc_osob) {
       $ilosc_podobienst = 0;
-      $zapytanie = "SELECT osoba, 1wybor, 2wybor, 3wybor FROM `klasa` WHERE osoba='$i';";
+      $zapytanie = "SELECT osoba, 1wybor, 2wybor, 3wybor FROM `$tabela` WHERE osoba='$i';";
       $wynik = mysqli_query($conn, $zapytanie);
       
       while($array_osob = mysqli_fetch_array($wynik)) {
@@ -140,7 +140,7 @@
         $osoba_dwa = $array_osob["2wybor"];
         $osoba_trzy = $array_osob["3wybor"];
 
-        $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `klasa` WHERE osoba='$osoba_jeden';";
+        $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `$tabela` WHERE osoba='$osoba_jeden';";
         $wynik = mysqli_query($conn, $zapytanie);
         $wynik_osoby = mysqli_fetch_array($wynik);
         foreach ($wynik_osoby as $numerek){
@@ -149,7 +149,7 @@
           }
         }
 
-        $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `klasa` WHERE osoba='$osoba_dwa';";
+        $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `$tabela` WHERE osoba='$osoba_dwa';";
         $wynik = mysqli_query($conn, $zapytanie);
         $wynik_osoby = mysqli_fetch_array($wynik);
         foreach ($wynik_osoby as $numerek){
@@ -158,7 +158,7 @@
           }
         }
         
-        $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `klasa` WHERE osoba='$osoba_trzy';";
+        $zapytanie = "SELECT 1wybor, 2wybor, 3wybor FROM `$tabela` WHERE osoba='$osoba_trzy';";
         $wynik = mysqli_query($conn, $zapytanie);
         $wynik_osoby = mysqli_fetch_array($wynik);
         foreach ($wynik_osoby as $numerek){

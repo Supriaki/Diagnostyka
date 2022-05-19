@@ -92,7 +92,11 @@ form {
 
 @media only screen and (max-width: 600px) {
   #szablon {
-    width: 600px;
+    width: 100%;
+  }
+
+  section {
+    height: 1000px;
   }
 
   .pasek {
@@ -105,11 +109,15 @@ form {
 
 @media only screen and (max-width: 375px) {
   #szablon {
-    width: 375px;
+    width: 100%;
+  }
+
+  section {
+    height: 1000px;
   }
 
   .pasek {
-    width: 375px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

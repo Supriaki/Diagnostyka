@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    error_reporting(0);
 
     // Checking if session is enabled
     if(!isset($_SESSION['user'])) {
@@ -7,7 +8,20 @@
                  location.href="index.php";
             </script>';
     } else {
+
+      $aktualna_tabela = "";
+
+      if (isset($_GET['tab'])) {
+        $aktualna_tabela = $_GET['tab'];
+      }
 ?>
+
+<script>
+function zmianaTabeli() {
+  var optionValue = document.getElementById("tabele").value;
+  location.href="index.php?strona=diagram&tab=" + optionValue;
+}
+</script>
 
 <?php
   // Necessary functions to work with diagram
@@ -16,16 +30,17 @@
   // Navigation bar
   require("php_fun/admin_nav.html");
 
-  function tabele_do_wybr()
-  {
+  function tabele_do_wybr() {
       require("php_fun/sql_login.php");
 
       $zapytanie_tabele = "show tables;";
       $wynik = mysqli_query($conn, $zapytanie_tabele);
       
+      // echo '<option value="' . $aktualna_tabela . '" selected>' .  $aktualna_tabela .  '</option>';
+
       while( $wiersz = mysqli_fetch_array($wynik)){
-        if ( !($wiersz[0] == "uzytk_spec") ) {
-          echo '<option value="'. $wiersz[0] .'">'. $wiersz[0] .'</option>';
+        if ( !($wiersz[0] == "uzytk_spec") && (!($wiersz[0] == "tabela")) && (!($wiersz[0] == $aktualna_tabela)) ) {
+          echo '<option class="diag_elementy" value="'. $wiersz[0] .'">'. $wiersz[0] .'</option>';
         }
       }
 
@@ -37,10 +52,19 @@
 
   <div class="panel-database">
     <div class="wysrodkowanie">
-      <select name="tabele" id="tabele">
+      <select name="tabele" id="tabele" class="select" oninput="zmianaTabeli()" onkeypress="zmianaTabeli()">
         <?php
             tabele_do_wybr();
         ?>
+        <script>
+          window.onload = function() {
+            document.querySelectorAll(".diag_elementy").forEach(element => {
+              element.addEventListener("click", function(){
+                zmianaTabeli();
+              });
+            });
+          }
+        </script>
       </select>
     </div>
   </div>
@@ -54,7 +78,7 @@
   <script type="text/javascript">
     var container = document.getElementById("mynetwork");
     var dot =
-      "dinetwork {node[shape=circle]; edge[length=100, color=gray, fontcolor=black]; <?php diag_wypel(); $ile_zer = diag_ile_zer(); ?> }";
+      "dinetwork {node[shape=circle]; edge[length=100, color=gray, fontcolor=black]; <?php diag_wypel($aktualna_tabela); $ile_zer = diag_ile_zer($aktualna_tabela); ?> }";
     var data = vis.parseDOTNetwork(dot);
     var network = new vis.Network(container, data);
   </script>
@@ -68,8 +92,8 @@
       <th>Wskaźnik integracji klasy: </th>
     </tr>
     <tr>
-      <td><?php echo $ile_wzj = diag_wzj_wybory();?></td>
-      <td><?php echo $ile_uczn = diag_ile_uczniow();?></td>
+      <td><?php echo $ile_wzj = diag_wzj_wybory($aktualna_tabela);?></td>
+      <td><?php echo $ile_uczn = diag_ile_uczniow($aktualna_tabela);?></td>
       <td><?php echo $ile_zer; ?></td>
       <td><?php echo diag_wsk_spoist($ile_wzj, $ile_uczn);?></td>
       <td><?php echo diag_wsk_integ($ile_zer);?></td>

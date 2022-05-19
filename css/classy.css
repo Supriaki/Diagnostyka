@@ -3,6 +3,9 @@
   --bg_color: rgb(24, 38, 51);
   --szeroksc_panelu: 1000px;
   --wysokosc_panelu: 300px;
+  --background-gradient: linear-gradient(30deg, #f39c12 30%, #f1c40f);
+  --gray: #34495e;
+  --darkgray: #2c3e50;
 }
 
 .wysrodkowanie {
@@ -268,9 +271,9 @@ select::-ms-expand {
 
 .panel-database {
   width: var(--szeroksc_panelu);
-  height: 50px;
+  /* height: 30px; */
   margin-bottom: 5px;
-  background-color: yellowgreen;
+  /* background-color: yellowgreen; */
 }
 
 #mynetwork {
@@ -318,32 +321,6 @@ th {
   border: 1px solid #ccc;
   text-align: left;
   font-size: 18px;
-}
-
-@media only screen and (max-width: 600px) {
-  .login-wrapper {
-    height: 500px;
-    width: 250px;
-  }
-
-  .selectdiv {
-    width: 250px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .login-wrapper {
-    height: 500px;
-    width: 250px;
-  }
-
-  .selectdiv {
-    width: 200px;
-
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-  }
 }
 
 /* Zarzadzanie database */
@@ -404,14 +381,87 @@ input {
 
 .zarz-prawa {
   float: left;
-  background-color: wheat;
+  /* background-color: wheat; */
   width: calc(var(--szeroksc_panelu) / 2);
   height: var(--wysokosc_panelu);
 }
 
 .zarz-lewa {
   float: left;
-  background-color: chartreuse;
+  /* background-color: chartreuse; */
   width: calc(var(--szeroksc_panelu) / 2);
   height: var(--wysokosc_panelu);
+}
+
+select {
+  /* Reset Select */
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  background-color: var(--darkgray);
+  background-image: none;
+  cursor: pointer;
+}
+
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+
+/* Custom Select wrapper */
+.select {
+  position: relative;
+  display: flex;
+  width: 12em;
+  height: 2em;
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+
+/* Arrow */
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em;
+  background-color: #34495e;
+  transition: 0.25s all ease;
+  pointer-events: none;
+}
+
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-wrapper {
+    height: 500px;
+    width: 250px;
+  }
+
+  .selectdiv {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .login-wrapper {
+    height: 500px;
+    width: 250px;
+  }
+
+  .selectdiv {
+    width: 50%;
+
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
 }

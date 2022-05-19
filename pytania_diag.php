@@ -11,7 +11,7 @@
 
 <?php
     // Importing globaly set table name
-    require('php_fun/database_settings.php');
+    require('php_fun/set_fun.php');
 
     function opcje($klasa)
     {
@@ -30,20 +30,22 @@
 
         mysqli_close($conn);
     }
+
+    $nazwa_tabeli = getTableName();
 ?>
 
 <div class="selectdiv">
-    <h2>
-        Wybierz 3 kolegów z którmi chciałbyś być na wycieczce szkolnej!
-        Kolejność ma znaczenie.
-    </h2>
+    <h4>
+        Wybierz 3 kolegów z którymi chciałbyś być na wycieczce szkolnej!
+        <mark>Kolejność ma znaczenie.</mark>
+    </h4>
 
     <form action="index.php?strona=zapytanie_diag" method="post" class="">
 
         <label for="koledzy1">Pierwszy kolega:</label>
             <select name="koledzy1" id="koledzy1">
                 <?php
-                    opcje($aktu_klasa);
+                    opcje($nazwa_tabeli);
                 ?>
             </select>
 
@@ -52,7 +54,7 @@
         <label for="koledzy2">Drugi kolega:</label>
             <select name="koledzy2" id="koledzy2">
                 <?php
-                    opcje($aktu_klasa);
+                    opcje($nazwa_tabeli);
                 ?>
             </select>
 
@@ -61,7 +63,7 @@
         <label for="koledzy3">Trzeci kolega:</label>
             <select name="koledzy3" id="koledzy3">
                 <?php
-                    opcje($aktu_klasa);
+                    opcje($nazwa_tabeli);
                 ?>
             </select>
         
@@ -74,15 +76,6 @@
 
     </form>
 </div>
-
-<script type="text/javascript">
-
-    let opcja1 = document.getElementById('koledzy1');
-    let opcja2 = document.getElementById('koledzy2');
-    let opcja3 = document.getElementById('koledzy3');
-
-</script>
-
 
 <?php
     }
