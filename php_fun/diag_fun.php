@@ -107,7 +107,7 @@
   function diag_ile_uczniow($tabela){
     require("php_fun/sql_login.php");
 
-    $zapytanie = "SELECT COUNT(id_klasa) FROM `$tabela`;";
+    $zapytanie = "SELECT COUNT(login) FROM `$tabela`;";
     $wynik = mysqli_query($conn, $zapytanie);
     $wynik_zapytania = mysqli_fetch_array($wynik);
     $ilosc_osob = (int)$wynik_zapytania[0];
@@ -124,7 +124,7 @@
     $i = 1;
     
     // Checking how much people are in database 
-    $zapytanie = "SELECT COUNT(id_klasa) FROM `$tabela`;";
+    $zapytanie = "SELECT COUNT(login) FROM `$tabela`;";
     $wynik = mysqli_query($conn, $zapytanie);
     $wynik_zapytania = mysqli_fetch_array($wynik);
     $ilosc_osob = (int)$wynik_zapytania[0];
@@ -218,7 +218,7 @@
     require("sql_login.php");
     
     // Checking how much people are in database 
-    $zapytanie = "SELECT COUNT(id_klasa) FROM `$tabela`;";
+    $zapytanie = "SELECT COUNT(login) FROM `$tabela`;";
     $wynik = mysqli_query($conn, $zapytanie);
     $wynik_zapytania = mysqli_fetch_array($wynik);
     $ilosc_osob = (int)$wynik_zapytania[0];
