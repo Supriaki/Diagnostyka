@@ -45,10 +45,12 @@
     
     $wynik = mysqli_query($conn, $str_tabeli);
 
+    echo '<div class="wysrodkowanie">';
     if ($wynik) {
-        echo "Poprawnie Stworzyło";
+        echo  '<a href="index.php?strona=diagram">' . "Poprawnie Stworzyło" . "</a>";
     } else {
-        echo "Napotkano błąd";
+        echo '<a href="index.php?strona=diagram">' . "Napotkano błąd, przepraszamy" . "</a>";
     }
+    echo '</div>'
 
 ?>

@@ -7,7 +7,12 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta
       name="author"
-      content="Bartłomiej Ochota , Michał Szklaruk-Leonkiewicz"
+      content="Bartłomiej Ochota 3Te (programista), Michał Szklaruk-Leonkiewicz 3Te (design)"
+    />
+
+    <meta
+      name="description"
+      content="Witryna internetowa wykonana w 2022 roku. Służy do przeprowadzenia socjometrii w Technikum Łączności i Multimediów Cyfrowych."
     />
 
     <link rel="shortcut icon" type="image/png" href="img/logo_tlimc.png" />
@@ -27,11 +32,7 @@
     <div class="pasek">
       <div class="logo">
         <div class="napis">
-          <a href="index.php">
-            <script>
-              index_napis();
-            </script></a
-          >
+          <a href="index.php"> Socjogram </a>
         </div>
       </div>
     </div>
@@ -39,43 +40,46 @@
     <div id="szablon">
       <section>
         <?php
-                // Default : importing login form 
-                // If strona is set = import selected page
-                if (!isset($_GET['strona'])){
-                    $plik = 'login';
-                }
-                else{
-                    $plik= $_GET['strona'];
-                }
-                
-                $roz ='.php';
-                include ("$plik$roz");
-            ?>
+          // Default : importing login form 
+          // If strona is set = import selected page
+          if (!isset($_GET['strona'])){
+              $plik = 'login';
+          }
+          else{
+              $plik= $_GET['strona'];
+          }
+          
+          $roz ='.php';
+          include ("$plik$roz");
+        ?>
       </section>
 
       <footer>
-        Wykonane przez: Bartłomiej Ochota oraz Michał Szklaruk-Leonkiewicz
+        <script>
+          index_napis();
+        </script>
         <br />
       </footer>
     </div>
 
     <script type="text/javascript">
       <?php
+        if (isset($_GET['strona'])){
           echo "let strona_akt = '" . $_GET['strona'] . "';";
+        }
       ?>
 
       if (strona_akt == 'diagram') {
-          let sekcja = document.querySelector('szablon');
-          sekcja.style.height = "1300px";
+          let sekcja = document.querySelector('section');
+          let select_nav = document.querySelector('select');
+
+          sekcja.style.height = "2400px";
+          select_nav.style.height = "3em";
       }
 
       if (strona_akt == 'pytania_diag') {
           if (screen.width < 600) {
-              console.log('im in');
-              // document.getElementsByClassName('selectdiv').style.width = screen.width / 2;
               document.getElementById("szablon").style.width = screen.width;
-              // document.querySelector('section').style.width = screen.width;
-              // document.querySelector('footer').style.width = screen.width;
           }
       }
     </script>

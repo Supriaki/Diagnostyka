@@ -39,7 +39,7 @@ function zmianaTabeli() {
       // echo '<option value="' . $aktualna_tabela . '" selected>' .  $aktualna_tabela .  '</option>';
 
       while( $wiersz = mysqli_fetch_array($wynik)){
-        if ( !($wiersz[0] == "uzytk_spec") && (!($wiersz[0] == "tabela")) && (!($wiersz[0] == $aktualna_tabela)) ) {
+        if ( !($wiersz[0] == "uzytk_spec") && (!($wiersz[0] == "tabela")) ) {
           echo '<option class="diag_elementy" value="'. $wiersz[0] .'">'. $wiersz[0] .'</option>';
         }
       }
@@ -65,8 +65,11 @@ function zmianaTabeli() {
             });
           }
         </script>
-      </select>
+      </select>  
     </div>
+    <?php
+    echo "<center><h4>" . "Przeglądanie: " . $aktualna_tabela . "<br>" .  " Wypełniło: " . diag_ile_wypel($aktualna_tabela) .  " Uczniów</h4></center>";
+    ?>
   </div>
 
   <div id="mynetwork">
@@ -83,6 +86,20 @@ function zmianaTabeli() {
     var network = new vis.Network(container, data);
   </script>
 
+  <div id="mynetwork2">
+    <div class="vis-network" tabindex="0">
+      <canvas width="1000" height="400"></canvas>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var container = document.getElementById("mynetwork2");
+    var dot =
+      "dinetwork {node[shape=circle]; edge[length=100, color=gray, fontcolor=black]; <?php diag_wypel_wzj_wybory($aktualna_tabela); ?> }";
+    var data = vis.parseDOTNetwork(dot);
+    var network = new vis.Network(container, data);
+  </script>
+  
   <table border="1">
     <tr>
       <th>Liczba wszystkich wzajemnych wyborów: </th>
@@ -99,7 +116,7 @@ function zmianaTabeli() {
       <td><?php echo diag_wsk_integ($ile_zer);?></td>
     </tr>
   </table>
-  
+
 </div>
 
 <?php

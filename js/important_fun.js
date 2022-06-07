@@ -9,3 +9,12 @@ function index_napis() {
 function tabela_istn() {
   alert("Nazwa bazy danych już istnieje!");
 }
+
+function showPass() {
+  var input = document.getElementById("loginPassword");
+  if (input.type === "password") {
+    input.type = "text";
+  } else {
+    input.type = "password";
+  }
+}
